@@ -1,0 +1,249 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<!-- Mirrored from greenteapress.com/thinkpython/code/remote_object.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2019 15:09:52 GMT -->
+<head><title>Python: module remote_object</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>remote_object</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".html">index</a><br><a href="file:/home/downey/swampy/code/python2/remote_object.py">/home/downey/swampy/code/python2/remote_object.py</a></font></td></tr></table>
+    <p><tt>Wrapper&nbsp;for&nbsp;Pyro:&nbsp;Python&nbsp;Remote&nbsp;Objects.<br>
+&nbsp;<br>
+Copyright&nbsp;2010&nbsp;Allen&nbsp;B.&nbsp;Downey<br>
+imdb.py:License:&nbsp;GNU&nbsp;GPLv3&nbsp;<a href="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</a></tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="Pyro.html">Pyro</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="signal.html">signal</a><br>
+<a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Pyro.core.html#ObjBase">Pyro.core.ObjBase</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="remote_object.html#RemoteObject">RemoteObject</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="remote_object.html#NameServer">NameServer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="remote_object.html#Watcher">Watcher</a>
+</font></dt><dt><font face="helvetica, arial"><a href="threading.html#Thread">threading.Thread</a>(<a href="threading.html#_Verbose">threading._Verbose</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="remote_object.html#MyThread">MyThread</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MyThread">class <strong>MyThread</strong></a>(<a href="threading.html#Thread">threading.Thread</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#MyThread">MyThread</a>&nbsp;is&nbsp;a&nbsp;wrapper&nbsp;for&nbsp;threading.<a href="threading.html#Thread">Thread</a>&nbsp;that&nbsp;improves<br>
+the&nbsp;syntax&nbsp;for&nbsp;creating&nbsp;and&nbsp;starting&nbsp;threads.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="remote_object.html#MyThread">MyThread</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MyThread-__init__"><strong>__init__</strong></a>(self, target, *args)</dt></dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="MyThread-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyThread-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyThread-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyThread-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyThread-is_alive"><strong>is_alive</strong></a> = isAlive(self)</dt></dl>
+
+<dl><dt><a name="MyThread-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MyThread-run"><strong>run</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MyThread-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="MyThread-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="MyThread-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><strong>daemon</strong></dt>
+</dl>
+<dl><dt><strong>ident</strong></dt>
+</dl>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NameServer">class <strong>NameServer</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;<a href="#NameServer">NameServer</a>&nbsp;object&nbsp;is&nbsp;a&nbsp;proxy&nbsp;for&nbsp;the&nbsp;name&nbsp;server&nbsp;running<br>
+on&nbsp;a&nbsp;remote&nbsp;host.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="NameServer-__init__"><strong>__init__</strong></a>(self, ns_host<font color="#909090">='rocky.olin.edu'</font>)</dt><dd><tt>Locates&nbsp;the&nbsp;name&nbsp;server&nbsp;on&nbsp;the&nbsp;given&nbsp;host.</tt></dd></dl>
+
+<dl><dt><a name="NameServer-clear"><strong>clear</strong></a>(self, prefix<font color="#909090">=''</font>, group<font color="#909090">=None</font>)</dt><dd><tt>Unregister&nbsp;all&nbsp;objects&nbsp;in&nbsp;the&nbsp;given&nbsp;group&nbsp;that&nbsp;start<br>
+with&nbsp;the&nbsp;given&nbsp;prefix.</tt></dd></dl>
+
+<dl><dt><a name="NameServer-create_group"><strong>create_group</strong></a>(self, name)</dt><dd><tt>Creates&nbsp;a&nbsp;group&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="NameServer-delete_group"><strong>delete_group</strong></a>(self, name)</dt><dd><tt>Deletes&nbsp;a&nbsp;group&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="NameServer-get_proxy"><strong>get_proxy</strong></a>(self, name)</dt><dd><tt>Looks&nbsp;up&nbsp;a&nbsp;remote&nbsp;object&nbsp;by&nbsp;name&nbsp;and&nbsp;creates&nbsp;a&nbsp;proxy&nbsp;for&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="NameServer-get_remote_object_list"><strong>get_remote_object_list</strong></a>(self, prefix<font color="#909090">=''</font>, group<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;remote&nbsp;objects&nbsp;in&nbsp;the&nbsp;given&nbsp;group<br>
+that&nbsp;start&nbsp;with&nbsp;the&nbsp;given&nbsp;prefix.</tt></dd></dl>
+
+<dl><dt><a name="NameServer-query"><strong>query</strong></a>(self, name, group<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;whether&nbsp;the&nbsp;given&nbsp;name&nbsp;is&nbsp;registered&nbsp;in&nbsp;the&nbsp;given&nbsp;group.<br>
+&nbsp;<br>
+Returns&nbsp;1&nbsp;if&nbsp;the&nbsp;name&nbsp;is&nbsp;a&nbsp;remote&nbsp;object,&nbsp;0&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;group,<br>
+and&nbsp;-1&nbsp;if&nbsp;it&nbsp;doesn't&nbsp;exist.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RemoteObject">class <strong>RemoteObject</strong></a>(<a href="Pyro.core.html#ObjBase">Pyro.core.ObjBase</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Extends&nbsp;Pyro.core.<a href="Pyro.core.html#ObjBase">ObjBase</a>&nbsp;and&nbsp;provides&nbsp;a&nbsp;higher&nbsp;level&nbsp;of&nbsp;abstraction.<br>
+&nbsp;<br>
+Objects&nbsp;that&nbsp;want&nbsp;to&nbsp;be&nbsp;available&nbsp;remotely&nbsp;should&nbsp;inherit<br>
+from&nbsp;this&nbsp;class,&nbsp;and&nbsp;either&nbsp;(1)&nbsp;don't&nbsp;override&nbsp;__init__&nbsp;or<br>
+(2)&nbsp;call&nbsp;<a href="#RemoteObject">RemoteObject</a>.__init__&nbsp;explicitly<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="RemoteObject-__init__"><strong>__init__</strong></a>(self, name<font color="#909090">=None</font>, ns<font color="#909090">=None</font>)</dt><dd><tt>Creates&nbsp;a&nbsp;new&nbsp;<a href="#RemoteObject">RemoteObject</a>&nbsp;with&nbsp;the&nbsp;given&nbsp;name&nbsp;and<br>
+registers&nbsp;with&nbsp;the&nbsp;given&nbsp;name&nbsp;server.&nbsp;&nbsp;If&nbsp;name&nbsp;is&nbsp;omitted,<br>
+one&nbsp;is&nbsp;generated&nbsp;based&nbsp;on&nbsp;the&nbsp;object&nbsp;id.&nbsp;&nbsp;If&nbsp;ns&nbsp;is&nbsp;omitted,<br>
+it&nbsp;uses&nbsp;the&nbsp;default&nbsp;name&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-cleanup"><strong>cleanup</strong></a>(self)</dt><dd><tt>Removes&nbsp;this&nbsp;object&nbsp;from&nbsp;the&nbsp;name&nbsp;server.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-connect"><strong>connect</strong></a>(self, ns, name)</dt><dd><tt>Connects&nbsp;to&nbsp;the&nbsp;given&nbsp;name&nbsp;server&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-join"><strong>join</strong></a>(self)</dt><dd><tt>Waits&nbsp;for&nbsp;the&nbsp;threadLoop&nbsp;to&nbsp;complete.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-requestLoop"><strong>requestLoop</strong></a>(self)</dt><dd><tt>Runs&nbsp;the&nbsp;request&nbsp;loop&nbsp;until&nbsp;an&nbsp;exception&nbsp;occurs.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-stopLoop"><strong>stopLoop</strong></a>(self)</dt><dd><tt>If&nbsp;stoppableLoop&nbsp;is&nbsp;running,&nbsp;stops&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-stoppableLoop"><strong>stoppableLoop</strong></a>(self)</dt><dd><tt>Run&nbsp;handleRequests&nbsp;until&nbsp;another&nbsp;thread&nbsp;clears&nbsp;self.<strong>running</strong>.</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-threadLoop"><strong>threadLoop</strong></a>(self)</dt><dd><tt>Runs&nbsp;the&nbsp;request&nbsp;loop&nbsp;in&nbsp;a&nbsp;separate&nbsp;thread.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="Pyro.core.html#ObjBase">Pyro.core.ObjBase</a>:<br>
+<dl><dt><a name="RemoteObject-GUID"><strong>GUID</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RemoteObject-Pyro_dyncall"><strong>Pyro_dyncall</strong></a>(self, method, flags, args)</dt></dl>
+
+<dl><dt><a name="RemoteObject-delegateTo"><strong>delegateTo</strong></a>(self, delegate)</dt></dl>
+
+<dl><dt><a name="RemoteObject-getAttrProxy"><strong>getAttrProxy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RemoteObject-getDaemon"><strong>getDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RemoteObject-getLocalStorage"><strong>getLocalStorage</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RemoteObject-getProxy"><strong>getProxy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RemoteObject-remote_retrieve_code"><strong>remote_retrieve_code</strong></a>(self, name)</dt><dd><tt>#&nbsp;remote&nbsp;code&nbsp;retrieve&nbsp;support&nbsp;(client&nbsp;retrieves&nbsp;from&nbsp;server):</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-remote_supply_code"><strong>remote_supply_code</strong></a>(self, name, module, sourceaddr)</dt><dd><tt>#&nbsp;remote&nbsp;code&nbsp;downloading&nbsp;support&nbsp;(server&nbsp;downloads&nbsp;from&nbsp;client):</tt></dd></dl>
+
+<dl><dt><a name="RemoteObject-setCodeValidator"><strong>setCodeValidator</strong></a>(self, v)</dt></dl>
+
+<dl><dt><a name="RemoteObject-setGUID"><strong>setGUID</strong></a>(self, guid)</dt></dl>
+
+<dl><dt><a name="RemoteObject-setPyroDaemon"><strong>setPyroDaemon</strong></a>(self, daemon)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Watcher">class <strong>Watcher</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>The&nbsp;<a href="#Watcher">Watcher</a>&nbsp;class&nbsp;solves&nbsp;two&nbsp;problems&nbsp;with&nbsp;multithreaded<br>
+programs&nbsp;in&nbsp;Python,&nbsp;(1)&nbsp;a&nbsp;signal&nbsp;might&nbsp;be&nbsp;delivered<br>
+to&nbsp;any&nbsp;thread&nbsp;(which&nbsp;is&nbsp;just&nbsp;a&nbsp;malfeature)&nbsp;and&nbsp;(2)&nbsp;if<br>
+the&nbsp;thread&nbsp;that&nbsp;gets&nbsp;the&nbsp;signal&nbsp;is&nbsp;waiting,&nbsp;the&nbsp;signal<br>
+is&nbsp;ignored&nbsp;(which&nbsp;is&nbsp;a&nbsp;bug).<br>
+&nbsp;<br>
+The&nbsp;watcher&nbsp;is&nbsp;a&nbsp;concurrent&nbsp;process&nbsp;(not&nbsp;thread)&nbsp;that<br>
+waits&nbsp;for&nbsp;a&nbsp;signal&nbsp;and&nbsp;then&nbsp;kills&nbsp;the&nbsp;process&nbsp;that&nbsp;contains&nbsp;the<br>
+active&nbsp;threads.&nbsp;&nbsp;See&nbsp;Appendix&nbsp;A&nbsp;of&nbsp;The&nbsp;Little&nbsp;Book&nbsp;of&nbsp;Semaphores.<br>
+&nbsp;<br>
+I&nbsp;have&nbsp;only&nbsp;tested&nbsp;this&nbsp;on&nbsp;Linux.&nbsp;&nbsp;I&nbsp;would&nbsp;expect&nbsp;it&nbsp;to<br>
+work&nbsp;on&nbsp;OS&nbsp;X&nbsp;and&nbsp;not&nbsp;work&nbsp;on&nbsp;Windows.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Watcher-__init__"><strong>__init__</strong></a>(self, callback<font color="#909090">=None</font>)</dt><dd><tt>Creates&nbsp;a&nbsp;child&nbsp;thread,&nbsp;which&nbsp;returns.&nbsp;&nbsp;The&nbsp;parent<br>
+thread&nbsp;waits&nbsp;for&nbsp;a&nbsp;KeyboardInterrupt&nbsp;and&nbsp;then&nbsp;kills<br>
+the&nbsp;child&nbsp;thread.</tt></dd></dl>
+
+<dl><dt><a name="Watcher-kill"><strong>kill</strong></a>(self)</dt><dd><tt>Kills&nbsp;the&nbsp;child&nbsp;process.</tt></dd></dl>
+
+<dl><dt><a name="Watcher-watch"><strong>watch</strong></a>(self, callback<font color="#909090">=None</font>)</dt><dd><tt>Waits&nbsp;for&nbsp;a&nbsp;KeyboardInterrupt&nbsp;and&nbsp;then&nbsp;kills&nbsp;the&nbsp;child&nbsp;process.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-get_ip_addr"><strong>get_ip_addr</strong></a>()</dt><dd><tt>Get&nbsp;the&nbsp;real&nbsp;IP&nbsp;address&nbsp;of&nbsp;this&nbsp;machine.</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>(script, name<font color="#909090">='remote_object'</font>, group<font color="#909090">='test'</font>, *args)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DEFAULT_NS_HOST</strong> = 'rocky.olin.edu'</td></tr></table>
+</body>
+<!-- Mirrored from greenteapress.com/thinkpython/code/remote_object.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2019 15:10:01 GMT -->
+</html>
