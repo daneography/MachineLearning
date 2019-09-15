@@ -54,13 +54,7 @@ def plotData(filename):
     #Preparing plot
     fig = plt.figure()
     fish = fig.add_subplot()
-    
-    """
-    #PLOTTING DATA
-    #Input: Takes inputs from the IrisData.txt, uses column0 for sepal lenght,
-    #column2 for petal length, and and column3 for the iris type.
-    #Output: 2D plot of petal length vs sepal length for each iris type.
-    """
+
     fish1 = fish.scatter(TigerFish1['Body Length'],TigerFish1['Dorsal Fin Length'], 
                         marker="^",color="Red")
     fish0 = fish.scatter(TigerFish0['Body Length'],TigerFish0['Dorsal Fin Length'],
@@ -86,7 +80,6 @@ def plotData(filename):
  OUTPUT: trainingSet and testSet dataframes and saved into text files
 """
 def loadDataSet(filename, split):
-    plotData(filename)
     # uses pandas library to read a tab-delimited text file from user input
     # headers are removed
     ffData = pd.read_csv(filename, delimiter='\t',header=None)
@@ -200,7 +193,7 @@ def crossValidate(trainSet, testSet,k):
         predictions.append(result)
     accuracy = getAccuracy(testSet, predictions)
     error = getError(testSet, predictions)
-    return accuracy, error
+    return accuracy, error, predictions
 
 def errorPlot(errorDF):
     errorDF.loc["TOTAL"] = errorDF.sum()
@@ -225,7 +218,7 @@ iteration of tests has been created
 def accuracyPlot(accuracyDF):
     accuracyDF.loc["MEAN"] = accuracyDF.mean()
     np.savetxt("accuracy.txt", accuracyDF, fmt='%g', encoding='utf-8', delimiter='\t')
-    print(""""
+    print("""
 >> A dataframe containing accuracy % for every
 iteration of tests has been created
           """)
@@ -248,17 +241,25 @@ def validationMode():
         accuracyDF = pd.DataFrame()
         for x in  range(5):
             for k in range(1,23,2):
-                print("Train" + str(x) + ".txt and Val" + str(x) + ".txt against k="+str(k))
+                print("Train" + str(x+1) + ".txt and Val" + str(x+1) + ".txt against k="+str(k))
                 trainSet = pd.read_csv("Train"+str(x+1)+".txt", delimiter='\t', header=None)
                 testSet = pd.read_csv("Val"+str(x+1)+".txt", delimiter='\t', header=None)
-                accuracy, error = crossValidate(trainSet, testSet, k)
+                accuracy, error, result = crossValidate(trainSet, testSet, k)
                 errorDF.at[x,k] = error
                 accuracyDF.at[x,k] = accuracy
+    
         errorPlot(errorDF)
         accuracyPlot(accuracyDF)
     
 def testMode(trainSet, testSet,k):
-        crossValidate(trainSet, testSet, k)
+        accuracy, error, prediction_ = crossValidate(trainSet, testSet, k)
+        print("Accuracy: " + repr(accuracy)+ '%')
+        print("Error: " + repr(error))
+        prediction_ = pd.DataFrame([prediction_, testSet.iloc[:,-1]])
+        np.savetxt("predictionVactual_comparison.txt", prediction_, fmt='%g', 
+                   delimiter='\t', encoding='utf-8')
+        
+        predictions = []
         while True:
             bodyLength = float(input("Input Body Length: "))
             dorsalLength = float(input("Input Dorsal Fin Length: "))
@@ -271,7 +272,9 @@ def testMode(trainSet, testSet,k):
                 input_neighbors = getNeighbors(trainSet, lengthSet,k)
                 input_neighbors_typeList = input_neighbors.iloc[:,-1].values.tolist()
                 result = getResponse(input_neighbors_typeList)
+                predictions.append(result)
                 print("That fish is predicted to be: TigerFish"+str(int(result)))
+                
 
 def main():
     print("""
@@ -287,6 +290,9 @@ def main():
     while True:
         print("""
             ==============================================================
+            |  If you want to see the plot for the data set that you     |
+            |  selected use 'plot'                                       |
+            |                                                            |
             |  If you want to figure out the best k for a data set       |
             |  use 'validate'.                                           |
             |                                                            |
@@ -295,6 +301,8 @@ def main():
             |                                                            |
             |  If you are grading this project and are using a different |
             |  data set use 'grade'.                                     |
+            |                                                            |
+            |   Use 'info' if you want to learn how to use this.         |
             |                                                            |
             |   If you want to reset and change the dataset file         |
             |   use 'reset'.                                             |
@@ -316,10 +324,46 @@ mode, what is the best k? """))
             continue
         
         elif mode == 'grade':
-            k = 5
+            k = 7
             testMode(trainSet, testSet,k)
             continue
         
+        elif mode == 'plot':
+            plotData(filename)
+            continue
+        
+        elif mode == 'info':
+            print("""
+                  Essentially, you want to start with 'validate'.
+                  This divides your data into two files (Training, Test) 80-20
+                  
+                  Training will then be divided into 5 sets and recursively 
+                  create a Train file that combines four of the set and 
+                  create a Val file that contains the unused set. This repeats
+                  until all combinations (no reuse) have been created.
+                  
+                  Those smaller sets will then be recursively tested against 
+                  each other on different K values. Train1 with Val1, Train2 
+                  with Val2, and so on.
+                  
+                  Two plots that show the errors and accuracy for each 
+                  iteration of tests will display. Providing information about
+                  the possible best k value to be used for Training v Test in 
+                  'test' mode.
+                  
+                  Test mode will prompt for a k value (best choice evaluated 
+                  from 'validate' mode). This will run Test against Training.
+                  It will display the accuracy of kNN and the number of errors.
+                  
+                  Then, it will create a predictionVactual_comparison.txt that 
+                  shows the predicted type and the actual type from here, 
+                  confusion matrix can then be evaluated
+                  
+                  If you're grading this, use "grade". This contains a hard 
+                  coded k that was evaluated from validate.
+                  """)
+            continue
+       
         elif mode == 'end':
             break
         
